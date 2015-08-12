@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="BootstrapTests.php" colors="true">
+    <testsuites>
+        <testsuite name="Mover">
+            <directory>./MoverTest</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

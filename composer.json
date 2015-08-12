@@ -1,0 +1,34 @@
+{
+  "name": "seyfer/zend-mover",
+  "version": "1.0",
+  "description": "Module for moving files",
+  "homepage": "http://seyferseed.ru",
+  "authors": [
+    {
+      "name": "seyfer",
+      "email": "seyferseed@mail.ru",
+      "homepage": "http://seyferseed.ru",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "zendframework/zendframework": ">=2.3",
+    "seyfer/zend-base-model": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "mikey179/vfsStream": "1.*"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.zendframework.com/"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "ZendMover\\": "src/"
+    }
+  }
+}
