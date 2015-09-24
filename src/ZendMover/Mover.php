@@ -6,8 +6,7 @@ use ZendBaseModel\Traits\DebugMode;
 use ZendMover\Command\MoveCommandInterface;
 
 /**
- * Description of Mover
- *
+ * Class Mover
  * @author  seyfer
  * @package ZendMover
  */
@@ -234,6 +233,16 @@ class Mover implements MoverInterface
         $result = rename($filePathFrom, $filePathTo);
 
         return $result;
+    }
+
+    /**
+     * @param $filePathFrom
+     * @param $filePathTo
+     * @return bool
+     */
+    protected function doSystemCommand($filePathFrom, $filePathTo)
+    {
+        return rename($filePathFrom, $filePathTo);
     }
 
     /**

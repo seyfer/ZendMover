@@ -9,7 +9,7 @@
 namespace ZendMover\Command;
 
 
-use ZendMover\Mover;
+use ZendMover\MoverInterface;
 
 /**
  * Class AbstractMoveCommand
@@ -53,14 +53,14 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
     protected $destinationFileName;
 
     /**
-     * @var Mover
+     * @var MoverInterface
      */
     protected $mover;
 
     /**
-     * @param Mover $mover
+     * @param MoverInterface $mover
      */
-    public function __construct(Mover $mover)
+    public function __construct(MoverInterface $mover)
     {
         $this->setMover($mover);
     }
@@ -122,7 +122,7 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
     }
 
     /**
-     * @return Mover
+     * @return MoverInterface
      */
     public function getMover()
     {
@@ -130,10 +130,10 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
     }
 
     /**
-     * @param Mover $mover
+     * @param MoverInterface $mover
      * @return $this
      */
-    public function setMover(Mover $mover)
+    public function setMover(MoverInterface $mover)
     {
         $this->mover = $mover;
 
