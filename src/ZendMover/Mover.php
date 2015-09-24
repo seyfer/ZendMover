@@ -230,7 +230,7 @@ class Mover implements MoverInterface
             return null;
         }
 
-        $result = rename($filePathFrom, $filePathTo);
+        $result = $this->doSystemCommand($filePathFrom, $filePathTo);
 
         return $result;
     }
