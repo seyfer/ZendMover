@@ -84,7 +84,23 @@ interface MoveCommandInterface
 
     public function reverseFromToDirs();
 
+    /**
+     * @param $filePathFrom
+     * @return mixed
+     */
     public function replacePath($filePathFrom);
 
+    /**
+     * @param $filePathFrom
+     * @return mixed
+     */
     public function replacePathBack($filePathFrom);
+
+    public function getDestinationFileName();
+
+    /**
+     * @param $destinationFileName
+     * @return $this
+     */
+    public function setDestinationFileName($destinationFileName);
 }

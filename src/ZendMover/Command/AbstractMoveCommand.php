@@ -48,6 +48,11 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
         ];
 
     /**
+     * @var string
+     */
+    protected $destinationFileName;
+
+    /**
      * @var Mover
      */
     protected $mover;
@@ -172,7 +177,7 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
     public function convertFilesToSpl()
     {
         if (!$this->filesToMove) {
-            return;
+            return null;
         }
 
         $converted = [];
@@ -286,7 +291,7 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
     public function setToDirectory($toDirectory)
     {
         if (!$toDirectory) {
-            return;
+            return null;
         }
 
         try {
@@ -322,14 +327,13 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
     }
 
     /**
-     *
      * @param  $fromDirectory
      * @return $this
      */
     public function setFromDirectory($fromDirectory)
     {
         if (!$fromDirectory) {
-            return;
+            return null;
         }
 
         $this->checkIsDir($fromDirectory);
@@ -340,7 +344,6 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
     }
 
     /**
-     *
      * @param  $dir
      * @return boolean
      * @throws \InvalidArgumentException
@@ -391,6 +394,25 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
      */
     public function unexecute()
     {
-        $this->mover->iLikeToMoveItMoveItBack($this);
+        $this->mover->iLikeToMoveItMoveItBack();
+    }
+
+    /**
+     * @return string
+     */
+    public function getDestinationFileName()
+    {
+        return $this->destinationFileName;
+    }
+
+    /**
+     * @param string $destinationFileName
+     * @return $this
+     */
+    public function setDestinationFileName($destinationFileName)
+    {
+        $this->destinationFileName = $destinationFileName;
+
+        return $this;
     }
 }

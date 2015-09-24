@@ -2,8 +2,8 @@
 
 namespace ZendMover;
 
-use ZendMover\Command\MoveCommandInterface;
 use ZendBaseModel\Traits\DebugMode;
+use ZendMover\Command\MoveCommandInterface;
 
 /**
  * Description of Mover
@@ -18,6 +18,9 @@ class Mover implements MoverInterface
     const DIRECTION_FORWARD = 1;
     const DIRECTION_BACK    = 2;
 
+    /**
+     * @var int
+     */
     protected $direction = self::DIRECTION_FORWARD;
 
     /**
@@ -33,6 +36,9 @@ class Mover implements MoverInterface
      */
     protected $commandList = [];
 
+    /**
+     * @var int
+     */
     protected $current = 0;
 
     /**
@@ -74,16 +80,25 @@ class Mover implements MoverInterface
         return $this->currentCommand;
     }
 
+    /**
+     * @return int
+     */
     public function getCommandListCount()
     {
         return count($this->commandList);
     }
 
+    /**
+     * @return bool
+     */
     public function isMoveIt()
     {
         return $this->moveIt;
     }
 
+    /**
+     * @return bool
+     */
     public function getMoveIt()
     {
         return $this->moveIt;
@@ -168,6 +183,9 @@ class Mover implements MoverInterface
         return $moveCommand;
     }
 
+    /**
+     * main move method
+     */
     private function processFiles()
     {
         foreach ($this->currentCommand->getFilesToMove() as $fileToMove) {
@@ -178,7 +196,6 @@ class Mover implements MoverInterface
             }
         }
     }
-
 
     /**
      * prepare path and do move
@@ -211,7 +228,7 @@ class Mover implements MoverInterface
         $this->validateFileTo($filePathTo);
 
         if (!$this->isMoveIt()) {
-            return;
+            return null;
         }
 
         $result = rename($filePathFrom, $filePathTo);
@@ -219,6 +236,10 @@ class Mover implements MoverInterface
         return $result;
     }
 
+    /**
+     * @param \SplFileInfo $file
+     * @return string
+     */
     private function prepareFilePathFrom(\SplFileInfo $file)
     {
         if ($this->getCurrentCommand()->isUsePathReplace() && $this->direction !== self::DIRECTION_BACK) {
@@ -240,12 +261,6 @@ class Mover implements MoverInterface
     private function prepareFilePathTo(\SplFileInfo $file)
     {
         if ($this->currentCommand->isUsePathReplace()) {
-
-            //            if ($this->currentCommand->getToDirectory()) {
-            //                $fileWhereToMovePath = $this->currentCommand->getFromDirectory() . DIRECTORY_SEPARATOR;
-            //            } else {
-            //
-            //            }
 
             $fileWhereToMovePath = $file->getPath() . DIRECTORY_SEPARATOR;
 
@@ -269,7 +284,13 @@ class Mover implements MoverInterface
             chmod($filePathTo, $this->defaultDirMod);
         }
 
-        $filePathTo .= $file->getFilename();
+        if ($this->currentCommand->getDestinationFileName()) {
+            $fileName = $this->currentCommand->getDestinationFileName();
+        } else {
+            $fileName = $file->getFilename();
+        }
+
+        $filePathTo .= $fileName;
 
         return $filePathTo;
     }
