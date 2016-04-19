@@ -1,6 +1,5 @@
 {
   "name": "seyfer/zend-mover",
-  "version": "1.0",
   "description": "Module for moving files",
   "homepage": "http://seyferseed.ru",
   "license": "MIT",
