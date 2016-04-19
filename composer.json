@@ -14,7 +14,7 @@
   "require": {
     "php": ">=5.4",
     "zendframework/zendframework": ">=2.3",
-    "seyfer/zend-base-model": "dev-master"
+    "seyfer/zend-base-model": "0.1"
   },
   "require-dev": {
     "phpunit/phpunit": "*",
