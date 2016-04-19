@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dec78009c3ec998c015cf6b6344e4dbe",
-    "content-hash": "01cf6150195d34c2870ab4179a073cbc",
+    "hash": "c470249c78f07579ebb017bca0cc5ebb",
+    "content-hash": "a7f0ac1fb5c43810473ef7f30e1a02e4",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1915,22 +1915,23 @@
         },
         {
             "name": "seyfer/zend-base-model",
-            "version": "v0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/seyfer/ZendBaseModel.git",
-                "reference": "34042e6342f658ac4435229a7ac2309c1fde68f3"
+                "reference": "8a8b1b85b1ded942f2aa353a1db471d8d181546d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/seyfer/ZendBaseModel/zipball/34042e6342f658ac4435229a7ac2309c1fde68f3",
-                "reference": "34042e6342f658ac4435229a7ac2309c1fde68f3",
+                "url": "https://api.github.com/repos/seyfer/ZendBaseModel/zipball/8a8b1b85b1ded942f2aa353a1db471d8d181546d",
+                "reference": "8a8b1b85b1ded942f2aa353a1db471d8d181546d",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-module": "*",
                 "doctrine/doctrine-orm-module": "~0.8",
                 "php": ">=5.4",
+                "seyfer/zend-psr-logger": "dev-master",
                 "zendframework/zendframework": ">=2.3"
             },
             "require-dev": {
@@ -1955,7 +1956,52 @@
             ],
             "description": "Base classes for ZF2 development",
             "homepage": "http://seyferseed.ru",
-            "time": "2016-04-19 08:13:17"
+            "time": "2016-04-19 09:59:17"
+        },
+        {
+            "name": "seyfer/zend-psr-logger",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/seyfer/ZendPsrLogger.git",
+                "reference": "4cdf539a6fbe2f475582f6f693ab7c51fe89d0b3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/seyfer/ZendPsrLogger/zipball/4cdf539a6fbe2f475582f6f693ab7c51fe89d0b3",
+                "reference": "4cdf539a6fbe2f475582f6f693ab7c51fe89d0b3",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": ">=2.4",
+                "doctrine/doctrine-module": ">=0.8",
+                "doctrine/doctrine-orm-module": ">=0.8",
+                "doctrine/orm": ">=2.4",
+                "php": ">=5.4",
+                "psr/log": "1.0.*@dev",
+                "zendframework/zendframework": ">=2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ZendPsrLogger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL v2"
+            ],
+            "authors": [
+                {
+                    "name": "seyfer",
+                    "email": "seyferseed@mail.ru",
+                    "homepage": "http://seyferseed.ru",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Base module for custom loggers. This is module that implement PSR-3 log interface with use Zend\\Log component. Also implement Doctrine log writer.",
+            "homepage": "http://seyferseed.ru",
+            "time": "2015-06-01 09:57:21"
         },
         {
             "name": "symfony/console",
@@ -5549,7 +5595,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "seyfer/zend-base-model": 20,
+        "seyfer/zend-psr-logger": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

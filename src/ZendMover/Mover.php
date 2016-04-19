@@ -2,7 +2,7 @@
 
 namespace ZendMover;
 
-use ZendBaseModel\Traits\DebugMode;
+use ZendBaseModel\Infrastructure\Traits\DebugMode;
 use ZendMover\Command\MoveCommandInterface;
 
 /**
