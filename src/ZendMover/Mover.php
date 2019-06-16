@@ -15,7 +15,7 @@ class Mover implements MoverInterface
     use DebugMode;
 
     const DIRECTION_FORWARD = 1;
-    const DIRECTION_BACK    = 2;
+    const DIRECTION_BACK = 2;
 
     /**
      * @var int
@@ -115,10 +115,6 @@ class Mover implements MoverInterface
      */
     protected function init(MoveCommandInterface $moveCommand)
     {
-        //        if (!$this->getFromDirectory() || !$this->getToDirectory()) {
-        //            throw new \RuntimeException(__METHOD__ . " you need set from and to directory");
-        //        }
-
         if (empty($moveCommand->getFilesToMove())) {
             throw new \RuntimeException(__METHOD__ . " you need set files for moving");
         }
@@ -136,8 +132,6 @@ class Mover implements MoverInterface
 
         $this->direction = self::DIRECTION_FORWARD;
         $this->init($moveCommand);
-
-        //        Debug::dump($moveCommand);
 
         $this->processFiles();
     }
@@ -217,11 +211,7 @@ class Mover implements MoverInterface
 
         //for debug
         $this->currentFilePathFrom = $filePathFrom;
-        $this->currentFilePathTo   = $filePathTo;
-
-        //        \Zend\Debug\Debug::dump($filePathFrom, 'filePathFrom');
-        //        \Zend\Debug\Debug::dump($filePathTo, 'filePathTo');
-        //        exit();
+        $this->currentFilePathTo = $filePathTo;
 
         $this->validateFileFrom($filePathFrom);
         $this->validateFileTo($filePathTo);
@@ -307,16 +297,16 @@ class Mover implements MoverInterface
     /**
      * maybe array
      *
-     * @deprecated
      * @param  $fileToMove
      * @return bool
+     * @deprecated
      */
     private function processArray($fileToMove)
     {
         $fileName = $fileToMove['name'];
 
         $filePathFrom = $this->currentCommand->getFromDirectory() . $fileName;
-        $filePathTo   = $this->currentCommand->getToDirectory() . $fileName;
+        $filePathTo = $this->currentCommand->getToDirectory() . $fileName;
 
         $this->validateFileFrom($filePathFrom);
         $this->validateFileTo($filePathTo);
@@ -335,7 +325,7 @@ class Mover implements MoverInterface
 
         if (!is_writable($filePathTo->getPath())) {
             throw new \RuntimeException(__METHOD__ . " " . $filePathTo .
-                                        " not writable");
+                " not writable");
         }
     }
 
@@ -346,12 +336,12 @@ class Mover implements MoverInterface
     {
         if (!file_exists($filePathFrom)) {
             throw new \RuntimeException(__METHOD__ . " " . $filePathFrom .
-                                        " not exist");
+                " not exist");
         }
 
         if (!is_readable($filePathFrom)) {
             throw new \RuntimeException(__METHOD__ . " " . $filePathFrom .
-                                        " not readable");
+                " not readable");
         }
     }
 

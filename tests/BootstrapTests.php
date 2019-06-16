@@ -5,6 +5,7 @@
  *
  * @author seyfer
  */
+
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
@@ -19,7 +20,7 @@ class BootstrapTests
 {
 
     static $modulesToInclude = [];
-    static $modulesToTest    = ['ZendMover'];
+    static $modulesToTest = ['ZendMover'];
 
     /**
      * @var ServiceManager
@@ -56,12 +57,12 @@ class BootstrapTests
         // use ModuleManager to load this module and it's dependencies
         $config = [
             'module_listener_options' => [
-                'module_paths'      => $zf2ModulePaths,
+                'module_paths' => $zf2ModulePaths,
                 'config_glob_paths' => [
-                    dirname(dirname(dirname(__DIR__))) . '/config/autoload/{,*.}{global,local}.php'
+                    dirname(dirname(dirname(__DIR__))) . '/config/autoload/{,*.}{global,local}.php',
                 ],
             ],
-            'modules'                 => $modules
+            'modules' => $modules,
         ];
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
@@ -117,19 +118,19 @@ class BootstrapTests
         $modulesPath = self::findParentPath('module');
         foreach (self::$modulesToTest as $moduleToTest) {
             $moduleToTestName = $moduleToTest . "Test";
-            $namespaces       = array_merge($namespaces, [
+            $namespaces = array_merge($namespaces, [
                 $moduleToTestName => $modulesPath . DIRECTORY_SEPARATOR . $moduleToTest . DIRECTORY_SEPARATOR .
-                                     'tests' . DIRECTORY_SEPARATOR . $moduleToTestName
+                    'tests' . DIRECTORY_SEPARATOR . $moduleToTestName,
             ]);
         }
 
         include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
         AutoloaderFactory::factory([
-                                       'Zend\Loader\StandardAutoloader' => [
-                                           'autoregister_zf' => true,
-                                           'namespaces'      => $namespaces
-                                       ],
-                                   ]);
+            'Zend\Loader\StandardAutoloader' => [
+                'autoregister_zf' => true,
+                'namespaces' => $namespaces,
+            ],
+        ]);
     }
 
     /**
@@ -138,7 +139,7 @@ class BootstrapTests
      */
     protected static function findParentPath($path)
     {
-        $dir         = __DIR__;
+        $dir = __DIR__;
         $previousDir = '.';
         while (!is_dir($dir . '/' . $path)) {
             $dir = dirname($dir);

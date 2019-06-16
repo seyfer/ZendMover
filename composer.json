@@ -1,35 +1,35 @@
 {
-  "name": "seyfer/zend-mover",
-  "description": "Module for moving files",
-  "homepage": "http://seyferseed.ru",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "seyfer",
-      "email": "seyferseed@mail.ru",
-      "homepage": "http://seyferseed.ru",
-      "role": "Developer"
+    "name": "seyfer/zend-mover",
+    "description": "Module for moving files",
+    "homepage": "http://seyferseed.ru",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "seyfer",
+            "email": "seyferseed@mail.ru",
+            "homepage": "http://seyferseed.ru",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "zendframework/zendframework": "~2.5.3",
+        "seyfer/zend-base-model": "dev-master",
+        "seyfer/zend-psr-logger": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.3.5",
+        "mikey179/vfsStream": "~1.6.6"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.zendframework.com/"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "ZendMover\\": "src/"
+        }
     }
-  ],
-  "require": {
-    "php": ">=5.4",
-    "zendframework/zendframework": ">=2.3",
-    "seyfer/zend-base-model": "dev-master",
-    "seyfer/zend-psr-logger": "dev-master"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "*",
-    "mikey179/vfsStream": "1.*"
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packages.zendframework.com/"
-    }
-  ],
-  "autoload": {
-    "psr-0": {
-      "ZendMover\\": "src/"
-    }
-  }
 }

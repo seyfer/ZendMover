@@ -37,17 +37,6 @@ class MoverTest extends BaseTest
         vfsStreamWrapper::register();
         $root = vfsStreamWrapper::setRoot(new vfsStreamDirectory("data"));
 
-        //        $structure = [
-        //            'dir1' => [
-        //                'file1' => 'some text content',
-        //            ],
-        //            'dir2' => [
-        //                'file2' => 'some text content',
-        //            ],
-        //        ];
-        //
-        //        vfsStream::create($structure, $root);
-
         vfsStream::copyFromFileSystem($this->testDataPath, $root);
     }
 
@@ -85,7 +74,6 @@ class MoverTest extends BaseTest
         $this->moveCommand->addFileToMove($file);
 
         $this->moveCommand->setFromDirectory($from);
-        //        $this->moveCommand->setToDirectory($to);
 
         $this->moveCommand->setUsePathReplace(TRUE);
         $this->moveCommand->setPathReplaceParts(["search" => "dir1", "replace" => "dir3"]);
@@ -144,12 +132,8 @@ class MoverTest extends BaseTest
          * @var Mover $moverMock
          */
         $moverMock = $this->getMockBuilder(Mover::class)
-                          ->setMethods(null)
-                          ->getMock();
-
-        //        $moverMock->expects($this->once())
-        //                  ->method('init')
-        //                  ->willReturn(TRUE);
+            ->setMethods(null)
+            ->getMock();
 
         return $moverMock;
     }
@@ -216,11 +200,6 @@ class MoverTest extends BaseTest
      */
     public function testMoveToAndBack()
     {
-        //        // Stop here and mark this test as incomplete.
-        //        $this->markTestIncomplete(
-        //            'This test has not been implemented yet.'
-        //        );
-
         $file1 = new \SplFileInfo(vfsStream::url('data/dir1/file1'));
         $this->prepareMoveCommand($file1, vfsStream::url('data/dir1/'), vfsStream::url('data/dir2/'));
         if (!$file1->isReadable()) {
@@ -233,7 +212,7 @@ class MoverTest extends BaseTest
         $this->assertTrue(vfsStreamWrapper::getRoot()->hasChild('data/dir2/file1'));
 
         //back
-        $this->mover       = new Mover();
+        $this->mover = new Mover();
         $this->moveCommand = new MoveCommand($this->mover);
 
         $file1 = new \SplFileInfo(vfsStream::url('data/dir2/file1'));

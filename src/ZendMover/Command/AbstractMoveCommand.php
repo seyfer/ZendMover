@@ -43,7 +43,7 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
      */
     protected $pathReplaceParts
         = [
-            "search"  => "",
+            "search" => "",
             "replace" => "",
         ];
 
@@ -150,7 +150,7 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
 
     /**
      *
-     * @param  \stdClass|Array $filesToMove
+     * @param \stdClass|Array $filesToMove
      * @return $this
      * @throws \RuntimeException
      */
@@ -186,7 +186,7 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
                 $converted[] = $fileToMove;
             } else {
                 $convertedFile = new \SplFileInfo($fileToMove);
-                $converted[]   = $convertedFile;
+                $converted[] = $convertedFile;
             }
         }
 
@@ -271,7 +271,7 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
     {
         if (!$file) {
             throw new \InvalidArgumentException(__METHOD__ . $file .
-                                                " param invalid");
+                " param invalid");
         }
 
         if (!$file instanceof \SplFileInfo) {
@@ -352,7 +352,7 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
     {
         if (!is_writable($dir)) {
             throw new \InvalidArgumentException(__METHOD__ . " " . $dir .
-                                                " is not writable");
+                " is not writable");
         }
 
         return TRUE;
@@ -368,7 +368,7 @@ abstract class AbstractMoveCommand implements MoveCommandInterface
     {
         if (!is_dir($dir)) {
             throw new \InvalidArgumentException(__METHOD__ . $dir .
-                                                " not is dir");
+                " not is dir");
         }
 
         return TRUE;
